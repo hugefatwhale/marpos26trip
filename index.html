@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Марпосадские острова | Поход с ночевкой</title>
+    <meta property="og:title" content="🏝️ Марпосадские острова | Поход с ночевкой" />
+    <meta property="og:description" content="Однодневное приключение с ночёвкой на тёплой Волге" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent-light: #ff6b6b;
+            --water: #0f3460;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --text: #2d3436;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+            background: var(--light);
+        }
+
+        /* Modern Hero */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.85), rgba(26, 26, 46, 0.9)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><rect fill="%2387ceeb" width="1920" height="1080"/><path fill="%234a90a4" opacity="0.6" d="M0 600 Q480 550 960 600 T1920 600 L1920 1080 L0 1080 Z"/><circle fill="%23ffd700" opacity="0.9" cx="1600" cy="250" r="80"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 80px 20px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        .hero-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border: 2px solid rgba(255,255,255,0.3);
+            margin-top: 20px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: white;
+            font-size: 2rem;
+            opacity: 0.7;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-15px); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 30px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 120px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-top: 15px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Intro Card */
+        .intro-card {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient-2);
+        }
+
+        .intro-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--text);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .intro-highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 40px 35px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Gallery Modern */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            padding: 40px 25px 25px;
+            color: white;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Video Section */
+        .video-section {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: var(--shadow-lg);
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--water), var(--primary));
+            margin-top: 30px;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit contain;
+            border-radius: 20px;
+        }
+
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .info-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 45px 40px;
+            box-shadow: var(--shadow-md);
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+        }
+
+        .info-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .info-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-card-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--gradient-2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .info-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .info-card p {
+            color: var(--gray);
+            line-height: 1.7;
+            margin: 10px 0;
+        }
+
+        .info-card .highlight {
+            background: var(--light);
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 18px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .info-card .highlight strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* Warning Box Modern */
+        .warning-box {
+            background: linear-gradient(135deg, #fff5e6, #ffe8cc);
+            border: 2px solid #ffd699;
+            border-radius: 20px;
+            padding: 35px 40px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .warning-box::before {
+            content: '⚠️';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2.5rem;
+            opacity: 0.3;
+        }
+
+        .warning-box h4 {
+            color: #b35900;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .warning-box ul {
+            list-style: none;
+            color: #b35900;
+        }
+
+        .warning-box li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+            font-size: 1.05rem;
+        }
+
+        .warning-box li::before {
+            content: '•';
+            position: absolute;
+            left: 12px;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        /* Boat Info Modern */
+        .boat-card {
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.05), rgba(102, 126, 234, 0.05));
+            border: 2px solid rgba(102, 126, 234, 0.2);
+            border-radius: 24px;
+            padding: 45px;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .boat-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .boat-card-icon {
+            font-size: 2.5rem;
+        }
+
+        .boat-card h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--water);
+        }
+
+        .boat-card p {
+            color: var(--text);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Location Modern */
+        .location-card {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: var(--shadow-lg);
+            margin-top: 40px;
+        }
+
+        .location-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .location-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .location-header h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .coords-box {
+            background: var(--light);
+            padding: 20px 25px;
+            border-radius: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin: 25px 0;
+            border: 2px dashed var(--accent);
+            display: inline-block;
+        }
+
+        .map-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gradient);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .map-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .location-details {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid var(--light);
+        }
+
+        .location-details p {
+            color: var(--gray);
+            margin: 12px 0;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .location-details p strong {
+            color: var(--primary);
+            min-width: 150px;
+        }
+
+        /* Packing List Modern */
+        .packing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .packing-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px 30px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .packing-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
+        }
+
+        .packing-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .packing-icon {
+            font-size: 2rem;
+        }
+
+        .packing-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .packing-card ul {
+            list-style: none;
+            color: var(--gray);
+        }
+
+        .packing-card li {
+            padding: 6px 0;
+            padding-left: 22px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .packing-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient);
+            border-radius: 30px;
+            padding: 70px 50px;
+            text-align: center;
+            color: white;
+            box-shadow: var(--shadow-lg);
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .cta-list {
+            list-style: none;
+            max-width: 500px;
+            margin: 30px auto;
+            text-align: left;
+            position: relative;
+        }
+
+        .cta-list li {
+            padding: 12px 0;
+            padding-left: 35px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .cta-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        /* Footer Modern */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 70px 30px;
+            margin-top: 120px;
+        }
+
+        .footer-emoji {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        footer h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+            margin: 8px 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 60px 20px;
+            }
+
+            .intro-card {
+                padding: 40px 25px;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .location-card,
+            .video-section,
+            .boat-card {
+                padding: 30px 25px;
+            }
+
+            .cta-section {
+                padding: 50px 25px;
+            }
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Приключение на Волге</div>
+            <h1>Марпосадские острова</h1>
+            <p class="hero-subtitle">Однодневное путешествие с ночёвкой в компании друзей</p>
+            <div class="hero-date">
+                <span>📅</span>
+                <span>Скоро старт</span>
+            </div>
+        </div>
+        <div class="scroll-indicator">↓</div>
+    </section>
+
+    <div class="container">
+        <!-- Intro -->
+        <section class="section">
+            <div class="intro-card">
+                <p class="intro-text">
+                    Отличные новости! <span class="intro-highlight">Нас ждут на Марпосадских островах</span>. 
+                    Один день и одна ночь на тёплой Волге: палатки под звёздами, костёр до рассвета, 
+                    шашлык на берегу и незабываемая атмосфера. Идеальный побег из города в кругу друзей!
+                </p>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">Что вас ждёт</div>
+                <h2 class="section-title">Идеальный отдых на природе</h2>
+                <p class="section-subtitle">Всё, что нужно для перезагрузки и отличного времени</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⛺</div>
+                    <h3>Уютный лагерь</h3>
+                    <p>Песчаный пляж, тенистые деревья и палатки с видом на Волгу. Комфортный лагерь для нашей компании.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔥</div>
+                    <h3>Вечер у костра</h3>
+                    <p>Тёплые разговоры, истории и песни под треск огня на берегу реки. Магия летней ночи.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🍖</div>
+                    <h3>Готовка на огне</h3>
+                    <p>Сочный шашлык и еда, приготовленная на костре. Вкуснее, чем в любом ресторане!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏊</div>
+                    <h3>Тёплая вода</h3>
+                    <p>Купание в Волге, прогулки на лодке и красивые закаты над водой. Лето в полном расцвете.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">Галерея</div>
+                <h2 class="section-title">Атмосфера прошлого отдыха</h2>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://s10.iimage.su/s/23/g2qyOjbxk8C3IItpi7Fty3jdBWLAyldjdQFLfVqtI.png" alt="Лагерь">
+                    <div class="gallery-overlay">
+                        <h4>Наш лагерь</h4>
+                        <p>Палатки на песчаном пляже</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://s10.iimage.su/s/23/ggybUa8xLQPaKDzvrUjdeihO9LcVUJ9HpTHbP1IyR.png" alt="Закат">
+                    <div class="gallery-overlay">
+                        <h4>Закат над Волгой</h4>
+                        <p>Невероятные краски вечера</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://s10.iimage.su/s/23/gaXJHPOxd2jVrBPEBOj7G5QrGPzZKtKNZOEDYM8je.png" alt="Лодка">
+                    <div class="gallery-overlay">
+                        <h4>Прогулка на лодке</h4>
+                        <p>Исследуем просторы реки</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://s10.iimage.su/s/23/gAPSO3TxGObEZirFe2zXVFGWCgTYu4u1KrzaEoM9S.png" alt="Пляж">
+                    <div class="gallery-overlay">
+                        <h4>Песчаный берег</h4>
+                        <p>Идеальное место для отдыха</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://s10.iimage.su/s/23/gWaMmXsxp2J6hlU81N1hHUT08zqoCa2BYaMnRKfpp.png" alt="Костёр">
+                    <div class="gallery-overlay">
+                        <h4>Ночной костёр</h4>
+                        <p>Тепло и уют до утра</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Section with HTML5 autoplay -->
+            <div class="video-section">
+                <div class="section-label">Видео</div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 10px;">🚤 Прогулка на моторной лодке</h3>
+                <p style="color: var(--gray);">Как мы добираемся до островов</p>
+                
+                <div class="video-wrapper">
+                    <video 
+                        id="camping-video"
+                        data-src="video.mp4"
+                        muted
+                        playsinline
+                        webkit-playsinline
+                        controls
+                        poster="https://i.imgur.com/placeholder-video-poster.jpg">
+                        Ваш браузер не поддерживает видео.
+                    </video>
+                </div>
+                
+                <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray); text-align: center;">
+                    🔇 Видео начнёт воспроизводиться автоматически при прокрутке (без звука)
+                </p>
+            </div>
+        </section>
+
+        <!-- Conditions -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">Условия</div>
+                <h2 class="section-title">Важная информация</h2>
+            </div>
+
+            <div class="warning-box">
+                <h4>Основные условия</h4>
+                <ul>
+                    <li>Поездка на 1 ночь (выезд и возвращение за 2 дня)</li>
+                    <li>Не более 2 машин (до 10 человек)</li>
+                    <li>Машиноместа есть у дома Валеры</li>
+                </ul>
+            </div>
+
+            <div class="boat-card">
+                <div class="boat-card-header">
+                    <div class="boat-card-icon">🚤</div>
+                    <h4>Доставка на лодке</h4>
+                </div>
+                <p>У Валеры (отца Насти) есть моторная лодка вместимостью до 4-5 человек + снаряжение. 
+                Нас будут доставлять на остров в 2 захода. Все будут в спасательных жилетах — 
+                безопасность на первом месте!</p>
+            </div>
+        </section>
+
+        <!-- Location -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">Локация</div>
+                <h2 class="section-title">Как добраться</h2>
+            </div>
+
+            <div class="location-card">
+                <div class="location-header">
+                    <div class="location-icon">📍</div>
+                    <h3>Точка сбора</h3>
+                </div>
+                
+                <p style="color: var(--gray); font-size: 1.1rem; margin-bottom: 20px;">
+                    Встречаемся у дома Валеры. Оттуда на моторной лодке доберёмся до островов.
+                </p>
+
+                <div class="coords-box">
+                    📌 56.101636, 47.878637
+                </div>
+
+                <br>
+
+                <a href="https://yandex.ru/maps?text=56.101636,47.878637&si=9bjfkhje7jxvdw6xye9jcmg6dr" 
+                   class="map-button" target="_blank">
+                    <span>🗺️</span>
+                    <span>Открыть в Яндекс.Картах</span>
+                </a>
+
+                <div class="location-details">
+                    <p><strong>🚗 На машинах:</strong> Парковка у дома, помещается до 2 автомобилей</p>
+                    <p><strong>🚤 Доставка:</strong> С дома на лодке до островов (2 захода)</p>
+                    <p><strong>⏱️ Время в пути:</strong> Около 15-20 минут на лодке</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Packing List -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-label">Список вещей</div>
+                <h2 class="section-title">Что взять с собой</h2>
+            </div>
+
+            <div class="packing-grid">
+                <div class="packing-card">
+                    <div class="packing-card-header">
+                        <span class="packing-icon">🎒</span>
+                        <h4>Снаряжение</h4>
+                    </div>
+                    <ul>
+                        <li>Палатка (если есть)</li>
+                        <li>Спальник</li>
+                        <li>Туристический коврик</li>
+                        <li>Рюкзак</li>
+                        <li>Налобный фонарик</li>
+                    </ul>
+                </div>
+
+                <div class="packing-card">
+                    <div class="packing-card-header">
+                        <span class="packing-icon">👕</span>
+                        <h4>Одежда</h4>
+                    </div>
+                    <ul>
+                        <li>Купальник / плавки</li>
+                        <li>Полотенце</li>
+                        <li>Сменная одежда</li>
+                        <li>Дождевик</li>
+                        <li>Головной убор</li>
+                        <li>Тёплая кофта на вечер</li>
+                    </ul>
+                </div>
+
+                <div class="packing-card">
+                    <div class="packing-card-header">
+                        <span class="packing-icon">🍽️</span>
+                        <h4>Посуда и еда</h4>
+                    </div>
+                    <ul>
+                        <li>Кружка, ложка, миска</li>
+                        <li>Нож</li>
+                        <li>Перекусы</li>
+                        <li>Напитки</li>
+                        <li>Вода (1-2 литра)</li>
+                    </ul>
+                </div>
+
+                <div class="packing-card">
+                    <div class="packing-card-header">
+                        <span class="packing-icon">🧴</span>
+                        <h4>Личное</h4>
+                    </div>
+                    <ul>
+                        <li>Аптечка</li>
+                        <li>Средства гигиены</li>
+                        <li>Репелленты от комаров</li>
+                        <li>Солнцезащитный крем</li>
+                        <li>Пауэрбанк</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section">
+            <div class="cta-section">
+                <h2>Готовы к приключению?</h2>
+                <p>Нам нужно определиться с датой и составом группы</p>
+                
+                <ul class="cta-list">
+                    <li>Выбрать удобную дату</li>
+                    <li>Подтвердить участие (до 10 человек)</li>
+                    <li>Согласовать детали поездки</li>
+                </ul>
+
+                <p style="margin-top: 30px; font-size: 1.1rem; opacity: 0.9;">
+                    Далее я согласую все организационные моменты с Валерой
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-emoji">🏕️✨</div>
+        <h3>До встречи на Волге!</h3>
+        <p>Жду всех на Марпосадских островах</p>
+        <p style="margin-top: 30px; opacity: 0.6; font-size: 0.9rem;">
+            Однодневное приключение с ночёвкой • Лето 2026
+        </p>
+    </footer>
+
+    <script>
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -80px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Autoplay HTML5 video on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('camping-video');
+            
+            if (video) {
+                const videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Load and play video when 50% visible
+                            if (video.dataset.src && !video.src) {
+                                video.src = video.dataset.src;
+                            }
+                            
+                            video.play().catch(error => {
+                                console.log('Autoplay prevented:', error);
+                            });
+                            
+                            // Stop observing after playing
+                            videoObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                videoObserver.observe(video);
+            }
+        });
+    </script>
+</body>
+</html>
